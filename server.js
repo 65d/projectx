@@ -16,10 +16,13 @@ var mysql = require('mysql');
 //     console.log("Connected!");
 // });
 
-app.get('/', (req, res) => {
-    res.send('Hello World!')
-})
-
+app.get('/', function (req, res) {
+    res.sendFile(__dirname + '/index.html');
+});
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
 })
+
+// ALTER USER 'root'@'localhost' IDENTIFIED WITH caching_sha2_password BY '1111Aa!55';
+
+// CREATE USER 'r1'@'localhost' IDENTIFIED WITH caching_sha2_password BY '1111Aa!55'; GRANT ALL PRIVILEGES ON *.* TO 'r1'@'localhost' WITH GRANT OPTION;
