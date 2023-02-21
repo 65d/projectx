@@ -58,6 +58,6 @@ app.get('/', (req, res) => {
 });
 
 // Запуск сервера
-app.listen(80, () => {
+app.listen(8080, () => {
     console.log('Server started on port 3000');
 });
