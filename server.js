@@ -40,7 +40,7 @@ const app = express();
 
 // Підключення до бази даних
 const connection = mysql.createConnection({
-    host: '45.136.71.95',
+    host: 'localhost',
     port: 3306,
     user: 'root',
     password: '111155',
