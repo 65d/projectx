@@ -64,8 +64,6 @@
 //
 //     });
 
-
-
 //
 // const express = require("express");
 // const app = express();
@@ -86,6 +84,7 @@
 const express = require("express");
 const app = express();
 const port = 3000;
+
 const programmingLanguagesRouter = require("./routes/programmingLanguages");
 app.use(express.json());
 app.use(
@@ -93,10 +92,20 @@ app.use(
         extended: true,
     })
 );
-app.get("/", (req, res) => {
-    res.json({ message: "ok" });
+app.get("/", (err, req, res, next) => {
+    // res.json({ message: "ok" });
+    const statusCode = err.statusCode || 500;
+    console.error(err.message, err.stack);
+    res.status(statusCode).json({ message: err.message });
 });
-app.use("/programming-languages", programmingLanguagesRouter);
+
+// app.use('/:id/programming-languages',programmingLanguagesRouter, function(req, res) {
+//     // const userId = ;
+//     console.log(req.params.id)
+//     // programmingLanguagesRouter;
+//     // виконуємо код з отриманим userId
+// });
+app.use("/api/", programmingLanguagesRouter);
 /* Error handler middleware */
 app.use((err, req, res, next) => {
     const statusCode = err.statusCode || 500;

@@ -9,7 +9,17 @@ function emptyOrRows(rows) {
     return rows;
 }
 
+function yesOrFake(rows) {
+    if (!rows.length) {
+        return false;
+    }
+    else {
+        return true;
+    }
+}
+
 module.exports = {
     getOffset,
-    emptyOrRows
+    emptyOrRows,
+    yesOrFake
 }
