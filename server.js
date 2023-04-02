@@ -84,6 +84,7 @@
 const express = require("express");
 const app = express();
 const port = 3000;
+const cors = require('cors');
 
 const programmingLanguagesRouter = require("./routes/programmingLanguages");
 app.use(express.json());
@@ -92,6 +93,7 @@ app.use(
         extended: true,
     })
 );
+app.use(cors());
 app.get("/", (err, req, res, next) => {
     // res.json({ message: "ok" });
     const statusCode = err.statusCode || 500;
@@ -107,12 +109,12 @@ app.get("/", (err, req, res, next) => {
 // });
 app.use("/api/", programmingLanguagesRouter);
 /* Error handler middleware */
-app.use((err, req, res, next) => {
-    const statusCode = err.statusCode || 500;
-    console.error(err.message, err.stack);
-    res.status(statusCode).json({ message: err.message });
-    return;
-});
+// app.use((err, req, res, next) => {
+//     const statusCode = err.statusCode || 500;
+//     console.error(err.message, err.stack);
+//     res.status(statusCode).json({ message: err.message });
+//     return;
+// });
 app.listen(port, () => {
-    console.log(`Example app listening at http://localhost:${port}`);
+    console.log(`App listening at http://localhost:${port}`);
 });

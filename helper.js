@@ -18,8 +18,14 @@ function yesOrFake(rows) {
     }
 }
 
+function generateRandomCode() {
+    var code = Math.floor(Math.random() * 100000000);
+    return code.toString().padStart(8, '0');
+}
+
 module.exports = {
     getOffset,
     emptyOrRows,
-    yesOrFake
+    yesOrFake,
+    generateRandomCode
 }
